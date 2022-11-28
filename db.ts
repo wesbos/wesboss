@@ -8,9 +8,9 @@ const env = await config();
 
 // DB connection
 const deets = {
-  host: env.DATABASE_HOST,
-  username: env.DATABASE_USERNAME,
-  password: env.DATABASE_PASSWORD,
+  host: env.DATABASE_HOST || Deno.env.get('DATABASE_HOST') ,
+  username: env.DATABASE_USERNAME || Deno.env.get('DATABASE_USERNAME') ,
+  password: env.DATABASE_PASSWORD || Deno.env.get('DATABASE_PASSWORD') ,
 }
 
 const conn = connect(deets)
