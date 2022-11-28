@@ -1,5 +1,7 @@
 // @deno-types="https://esm.sh/@planetscale/database/dist/index.d.ts"
-import { connect } from 'npm:@planetscale/database';
+import { connect } from 'https://esm.sh/@planetscale/database';
+// Not working on deno.land
+// import { connect } from 'npm:@planetscale/database';
 import { config } from "https://deno.land/std@0.166.0/dotenv/mod.ts";
 
 const env = await config();
