@@ -9,11 +9,8 @@ async function handler(req: Request): Promise<Response> {
   const formattedNumber = formatter.format(count);
 
   const formatted = template.replace('{% JABRONIS %}', formattedNumber);
-  const body = `
-    ${formatted}
-  `;
-  return new Response(body, {
-    status: 404,
+  return new Response(formatted, {
+    status: 200,
     headers: {
       "content-type": "text/html; charset=utf-8",
     },
