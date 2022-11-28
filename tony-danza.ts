@@ -3,10 +3,12 @@ import { getCount } from "./db.ts";
 
 
 const template = await Deno.readTextFile('./template.html');
-
+const formatter = Intl.NumberFormat()
 async function handler(req: Request): Promise<Response> {
   const count = await getCount();
-  const formatted = template.replace('{% JABRONIS %}', count.toString());
+  const formattedNumber = formatter.format(count);
+
+  const formatted = template.replace('{% JABRONIS %}', formattedNumber);
   const body = `
     ${formatted}
   `;
