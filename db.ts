@@ -1,5 +1,5 @@
 // @deno-types="https://esm.sh/@planetscale/database/dist/index.d.ts"
-import { connect } from 'https://esm.sh/@planetscale/database';
+import { connect } from "https://esm.sh/@planetscale/database";
 // Not working on deno.land
 // import { connect } from 'npm:@planetscale/database';
 import { config } from "https://deno.land/std@0.166.0/dotenv/mod.ts";
@@ -8,12 +8,12 @@ const env = await config();
 
 // DB connection
 const deets = {
-  host: env.DATABASE_HOST || Deno.env.get('DATABASE_HOST') ,
-  username: env.DATABASE_USERNAME || Deno.env.get('DATABASE_USERNAME') ,
-  password: env.DATABASE_PASSWORD || Deno.env.get('DATABASE_PASSWORD') ,
-}
+  host: env.DATABASE_HOST || Deno.env.get("DATABASE_HOST"),
+  username: env.DATABASE_USERNAME || Deno.env.get("DATABASE_USERNAME"),
+  password: env.DATABASE_PASSWORD || Deno.env.get("DATABASE_PASSWORD"),
+};
 
-const conn = connect(deets)
+const conn = connect(deets);
 
 // DB Query
 interface Counts {
