@@ -5,6 +5,17 @@ const template = await Deno.readTextFile("./template.html");
 const formatter = Intl.NumberFormat();
 
 async function handler(req: Request): Promise<Response> {
+  const url = new URL(req.url);
+
+  if (url.pathname === '/robots.txt') {
+    return new Response("User-agent: *\nDisallow: /", {
+      status: 200,
+      headers: {
+        "content-type": "text/plain",
+      },
+    });
+  }
+  
   const count = await getCount();
   const formattedNumber = formatter.format(count);
 
