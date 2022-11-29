@@ -3,8 +3,8 @@ import { getCount } from "./db.ts";
 
 const formatter = Intl.NumberFormat();
 
+const template = await Deno.readTextFile("./template.html");
 async function handler(req: Request): Promise<Response> {
-  const template = await Deno.readTextFile("./template.html");
   const url = new URL(req.url);
 
   if (url.pathname === '/robots.txt') {
