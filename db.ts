@@ -22,11 +22,8 @@ interface Counts {
 }
 
 export async function getCount(): Promise<number> {
-  // update
-  await conn.execute(`UPDATE counts SET count = count + 1 WHERE id = 1`);
-
-  // get new value. Can/should this be done in one query?
-  const response = await conn.execute(`SELECT * FROM counts WHERE id = 1`);
+  // update and read the new value
+  const response = await conn.execute(`WITH result AS (UPDATE counts SET count = count + 1 WHERE id = 1) SELECT count FROM counts`);
 
   const [visits] = response.rows as Counts[];
   return visits.count;
