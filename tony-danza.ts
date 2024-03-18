@@ -18,8 +18,6 @@ async function handler(req: Request): Promise<Response> {
 
   const { count, denoKVCount} = await getCount();
 
-  console.log({ count, denoKVCount });
-
   const formattedNumber = formatter.format(count);
   const formattedDenoKVCount = formatter.format(denoKVCount);
 
