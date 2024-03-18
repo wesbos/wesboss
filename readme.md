@@ -8,4 +8,4 @@ Sourcecode for wesboss.com
 
 ## Running
 
-deno run --watch --allow-all tony-danza.ts
+deno run --watch --allow-all --unstable-kv tony-danza.ts

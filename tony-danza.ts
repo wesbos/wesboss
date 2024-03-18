@@ -16,10 +16,14 @@ async function handler(req: Request): Promise<Response> {
     });
   }
 
-  const count = await getCount();
-  const formattedNumber = formatter.format(count);
+  const { count, denoKVCount} = await getCount();
 
-  const formatted = template.replace("{% JABRONIS %}", formattedNumber);
+  console.log({ count, denoKVCount });
+
+  const formattedNumber = formatter.format(count);
+  const formattedDenoKVCount = formatter.format(denoKVCount);
+
+  const formatted = template.replace("{% JABRONIS %}", formattedNumber).replace("{% DINOS %}", formattedDenoKVCount);
   return new Response(formatted, {
     status: 200,
     headers: {
